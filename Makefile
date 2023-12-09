@@ -1,7 +1,7 @@
 run: build start
 
 build:
-		go build -o bin/main cmd/main.go
+	go build -o bin/main cmd/main.go
 
 start:
-		cd bin && ./main
+	cd bin && ./main
