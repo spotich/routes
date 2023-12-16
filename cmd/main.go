@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	_ "github.com/spotich/routes/pkg/dbmanager/main.go"
 )
 
 func main() {
