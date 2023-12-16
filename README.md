@@ -34,5 +34,5 @@ git clone git@github.com:spotich/routes.git
 ``` shell
 cd routes
 docker build -t routes .
-
+docker run -dp 80:80 routes
 ```
