@@ -21,9 +21,7 @@ systemctl enable docker
 # Работа с Git репозиторием на VPS
 
 1. Авторизация в GitHub
-Создать SSH ключ, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-
-Добавить созданный ключ на GitHub, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+Создать SSH ключ, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Добавить созданный ключ на GitHub, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
 2. Клонирование проекта с удаленного репозитория GitHub
 ``` shell
