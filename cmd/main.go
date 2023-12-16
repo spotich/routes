@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	_ "github.com/spotich/routes/pkg/dbmanager/main.go"
+	_ "github.com/spotich/routes/pkg/dbmanager"
 )
 
 func main() {
