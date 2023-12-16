@@ -1,6 +1,6 @@
 # Установка программ на VPS
 ## 1. Docker Engine
-```
+``` shell
 apt update
 apt install -y curl
 apt install -y apt-transport-https ca-certificates curl software-properties-common
