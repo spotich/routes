@@ -65,7 +65,7 @@ docker run \
     --network routes \
     -dp 3306:3306 \
     -e MYSQL_ROOT_PASSWORD=1234 \
-    -v /opt/mysql:/var/lib/mysql \
+    -v ./storage/mysql:/var/lib/mysql \
     mysql
 ```
 
