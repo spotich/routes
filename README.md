@@ -34,7 +34,7 @@ git clone git@github.com:spotich/routes.git
 ``` shell
 docker pull spotich/routes
 docker pull mysql
-docker pull phpmyadmin
+docker pull phpmyadmin/phpmyadmin
 ```
 
 4. Создание сети
