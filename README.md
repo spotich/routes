@@ -18,8 +18,9 @@ systemctl enable docker
 ```
 
 
-# Работа с Git репозиторием на VPS
+# Подготовка VPS
 
+## Git
 1. Авторизация в GitHub
 Создать SSH ключ, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Добавить созданный ключ на GitHub, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
@@ -28,11 +29,52 @@ systemctl enable docker
 git clone git@github.com:spotich/routes.git
 ```
 
+## Docker
+3. Установка образов
+``` shell
+docker pull spotich/routes
+docker pull mysql
+docker pull phpmyadmin
+```
+
+4. Создание сети
+``` shell
+docker network create routes
+```
+
 
 # Запуск приложения
 
+### Создание контейнеров
+
+1. Приложение
 ``` shell
 cd routes
-docker build -t routes .
-docker run -dp 80:80 routes
+docker run \
+    --name routes-app \
+    --network routes \
+    -dp 80:80 \
+    spotich/routes
+```
+
+2. MySQL
+``` shell
+mkdir -p ./storage/mysql
+docker run \
+    --name routes-db \
+    --network routes \
+    -dp 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=1234 \
+    -v /opt/mysql:/var/lib/mysql \
+    mysql
+```
+
+3. PhpMyAdmin
+``` shell
+docker run \
+    --name routes-pma \
+    --network routes \
+    -dp 3306:3306 \
+    -e PMA_HOST=routes-db \
+    phpmyadmin
 ```
