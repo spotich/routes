@@ -74,7 +74,7 @@ docker run \
 docker run \
     --name routes-pma \
     --network routes \
-    -dp 3306:3306 \
+    -dp 8080:8080 \
     -e PMA_HOST=routes-db \
     phpmyadmin
 ```
