@@ -15,7 +15,7 @@ type Manager struct {
 	db *sql.DB
 }
 
-type news struct {
+type order struct {
 	Id    int64
 	Title string
 	Body  string
@@ -41,7 +41,7 @@ func (mgr *Manager) Connect(configPath string) error {
 	return nil
 }
 
-func (mgr *Manager) GetNews() ([]news, error) {
+func (mgr *Manager) GetOrders() ([]order, error) {
 	rows, err := mgr.db.Query("SELECT * FROM news")
 	if err != nil {
 		return nil, err
