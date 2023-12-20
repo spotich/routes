@@ -1,0 +1,14 @@
+{{ template "header" . }}
+
+<ol id="sortablelist">
+  {{ range .Orders }}
+    <li>Address: {{ .Address }}; Delivery window: {{ .DeliveryWindow }}.</li>
+  {{ end }}
+</ol>
+<script>
+new Sortable(sortablelist, {
+  animation: 150,
+  ghostClass: 'sortable-ghost'
+});
+</script>
+{{ template "footer" . }}
