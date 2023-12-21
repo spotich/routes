@@ -1,9 +1,20 @@
+# Локальное развертывание
+
+## Git
+1. Авторизация в GitHub
+Создать SSH ключ, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Добавить созданный ключ на GitHub, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+2. Клонирование проекта с удаленного репозитория GitHub
+``` shell
+git clone git@github.com:spotich/routes.git
+```
+
 # Установка программ на VPS
 
- 1. Vim, Curl, Gpg, Git
+ 1. Vim, Curl, Gpg
 ``` shell
 apt update
-apt install -y vim curl gpg git
+apt install -y vim curl gpg
 ```
 
 2. Docker Engine
@@ -19,15 +30,6 @@ systemctl enable docker
 
 
 # Подготовка VPS
-
-## Git
-1. Авторизация в GitHub
-Создать SSH ключ, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Добавить созданный ключ на GitHub, следуя [документации](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-
-2. Клонирование проекта с удаленного репозитория GitHub
-``` shell
-git clone git@github.com:spotich/routes.git
-```
 
 ## Docker
 3. Установка образов
