@@ -48,9 +48,9 @@ func (mgr *Manager) GetOrders() ([]order, error) {
 	}
 	defer rows.Close()
 
-	var data []news
+	var data []order
 	for rows.Next() {
-		var n news
+		var n order
 		if err := rows.Scan(&n.Id, &n.Title, &n.Body, &n.Cover); err != nil {
 			return nil, err
 		}
