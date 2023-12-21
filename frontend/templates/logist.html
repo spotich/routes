@@ -1,14 +1,75 @@
 {{ template "header" . }}
+<style>
+  #mapConteiner {
+    background-color: aquamarine;
+    height: 100%;
+    
+  }
+</style>
 
-<ol id="sortablelist">
-  {{ range .Orders }}
-    <li>Address: {{ .Address }}; Delivery window: {{ .DeliveryWindow }}.</li>
-  {{ end }}
-</ol>
+<div class="container">
+  <div class="row" style="height: 120px"></div>
+  <div class="row mb-4">
+    <h1 class="mb-4">Добрый день, {{ .Name }}!</h1>
+    <p>Сегодня {{ .TodayDate }}. До нового года осталось совсем немного! А пока, Вам нужно распределить доставки на {{ .TomorrowDate }}.</p>
+  </div>
+  <div class="row">
+    <div class="col order-last">
+      <div id="mapConteiner" class="container rounded"></div>
+      <script>
+        // const map = new mapgl.Map('container', {
+        //   key: 'fc43a0bd-9d71-4da1-93be-2cbdd2507c46',
+        //   center: [82.942781, 55.017394],
+        //   zoom: 10,
+        // });
+        // const marker = new mapgl.Marker(map, {
+        //   coordinates: [82.942781, 55.017394],
+        // });
+      </script>
+    </div>
+
+    <div class="col-4">
+      <ol id="simpleList" class="list-group">
+        {{ range $key, $val := .Orders }}
+          <li class="list-group-item" id="{{ $key }}">Address: {{ $val.Address }}; Delivery window: {{ $val.DeliveryWindow }}.</li>
+          <script>
+            // alert(parseFloat("{{ $val.Lat }}"));
+            // const marker = new mapgl.Marker(map, {
+            //   coordinates: [parseFloat("{{ $val.Lon }}"), parseFloat("{{ $val.Lat }}")],
+            // });
+          </script>
+        {{ end }}
+      </ol>
+    </div>
+    
+  </div>
+</div>
+
 <script>
-new Sortable(sortablelist, {
-  animation: 150,
-  ghostClass: 'sortable-ghost'
-});
+  let orderList = Sortable.create(simpleList, {
+    group: "orders",
+    store: {
+      /**
+       * Get the order of elements. Called once during initialization.
+       * @param   {Sortable}  sortable
+       * @returns {Array}
+       */
+      get: function (sortable) {
+        var order = localStorage.getItem(sortable.options.group.name);
+        return order ? order.split('|') : [];
+      },
+
+      /**
+       * Save the order of elements. Called onEnd (when the item is dropped).
+       * @param {Sortable}  sortable
+       */
+      set: function (sortable) {
+        var order = sortable.toArray();
+        localStorage.setItem(sortable.options.group.name, order.join('|'));
+      }
+	  },
+    animation: 100
+  });
 </script>
+
 {{ template "footer" . }}
