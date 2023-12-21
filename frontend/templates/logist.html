@@ -13,9 +13,10 @@
     <h1 class="mb-4">Добрый день, {{ .Name }}!</h1>
     <p>Сегодня {{ .TodayDate }}. До нового года осталось совсем немного! А пока, Вам нужно распределить доставки на {{ .TomorrowDate }}.</p>
   </div>
+  
   <div class="row">
     <div class="col order-last">
-      <div id="mapConteiner" class="container rounded"></div>
+      <div id="mapConteiner" class="rounded"></div>
       <script>
         // const map = new mapgl.Map('container', {
         //   key: 'fc43a0bd-9d71-4da1-93be-2cbdd2507c46',
@@ -27,21 +28,36 @@
         // });
       </script>
     </div>
-
     <div class="col-4">
-      <ol id="simpleList" class="list-group">
-        {{ range $key, $val := .Orders }}
-          <li class="list-group-item" id="{{ $key }}">Address: {{ $val.Address }}; Delivery window: {{ $val.DeliveryWindow }}.</li>
-          <script>
-            // alert(parseFloat("{{ $val.Lat }}"));
-            // const marker = new mapgl.Marker(map, {
-            //   coordinates: [parseFloat("{{ $val.Lon }}"), parseFloat("{{ $val.Lat }}")],
-            // });
-          </script>
-        {{ end }}
-      </ol>
+      <div class="row mb-2">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <div class="row px-3">
+                <button type="button" class="col btn btn-block btn-outline-danger me-2">Reset</button>
+                <button type="button" class="col btn btn-block btn-outline-primary me-2">Save</button>
+                <button type="button" class="col btn btn-block btn-outline-success">Optimize</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <ol id="simpleList" class="list-group list-group-numbered">
+            {{ range $key, $val := .Orders }}
+              <li class="list-group-item" id="{{ $key }}">Address: {{ $val.Address }}; Delivery window: {{ $val.DeliveryWindow }}.</li>
+              <script>
+                // alert(parseFloat("{{ $val.Lat }}"));
+                // const marker = new mapgl.Marker(map, {
+                //   coordinates: [parseFloat("{{ $val.Lon }}"), parseFloat("{{ $val.Lat }}")],
+                // });
+              </script>
+            {{ end }}
+          </ol>
+        </div>
+      </div>
     </div>
-    
   </div>
 </div>
 

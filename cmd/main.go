@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"text/template"
@@ -25,7 +24,7 @@ func main() {
 }
 
 func sayHello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello world!")
+	http.Redirect(w, r, "/logist", http.StatusSeeOther)
 }
 
 func sayHelloLogist(w http.ResponseWriter, r *http.Request) {
@@ -41,7 +40,7 @@ func sayHelloLogist(w http.ResponseWriter, r *http.Request) {
 		{"улица Писарева, дом 36, кв. 69", "18:00 - 22:00", 55.048253, 82.922511},
 	}
 	data := map[string]interface{}{
-		"Title":        "Logist Page",
+		"Title":        "Кабинет логиста",
 		"Name":         "Юрий",
 		"TodayDate":    "21 декабря 2023 года",
 		"TomorrowDate": "22 декабря 2023 года",
