@@ -29,27 +29,23 @@ systemctl enable docker
 ```
 
 
-# Подготовка VPS
+# Запуск приложения в Docker
 
-## Docker
-3. Установка образов
+1. Установка образов
 ``` shell
 docker pull spotich/routes
 docker pull mysql
 docker pull phpmyadmin/phpmyadmin
 ```
 
-4. Создание сети
+2. Создание сети
 ``` shell
 docker network create routes
 ```
 
-
-# Запуск приложения
-
-### Создание контейнеров
-
-1. Приложение
+3. Запуск контейнеров
+   
+Приложение
 ``` shell
 cd routes
 docker run \
@@ -59,7 +55,7 @@ docker run \
     spotich/routes
 ```
 
-2. MySQL
+MySQL
 ``` shell
 mkdir -p ./storage/mysql
 docker run \
@@ -71,7 +67,7 @@ docker run \
     mysql
 ```
 
-3. PhpMyAdmin
+PhpMyAdmin
 ``` shell
 docker run \
     --name routes-pma \
