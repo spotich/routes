@@ -1,12 +1,12 @@
 {{ template "header" . }}
 <style>
-  #mapConteiner {
-    background-color: aquamarine;
-    height: 100%;
+  #mapContainer {
+    /* background-color: aquamarine; */
+    height: 670px;
+    width: 850px;
     
   }
 </style>
-
 <div class="container">
   <div class="row" style="height: 120px"></div>
   <div class="row mb-4">
@@ -16,16 +16,16 @@
   
   <div class="row">
     <div class="col order-last">
-      <div id="mapConteiner" class="rounded"></div>
+      <div id="mapContainer"></div>
       <script>
-        // const map = new mapgl.Map('container', {
-        //   key: 'fc43a0bd-9d71-4da1-93be-2cbdd2507c46',
-        //   center: [82.942781, 55.017394],
-        //   zoom: 10,
-        // });
-        // const marker = new mapgl.Marker(map, {
-        //   coordinates: [82.942781, 55.017394],
-        // });
+        const map = new mapgl.Map('mapContainer', {
+          key: 'fc43a0bd-9d71-4da1-93be-2cbdd2507c46',
+          center: [82.942781, 55.017394],
+          zoom: 13,
+        });
+        const marker = new mapgl.Marker(map, {
+          coordinates: [82.942781, 55.017394],
+        });
       </script>
     </div>
     <div class="col-4">
@@ -49,9 +49,11 @@
               <li class="list-group-item" id="{{ $key }}">Address: {{ $val.Address }}; Delivery window: {{ $val.DeliveryWindow }}.</li>
               <script>
                 // alert(parseFloat("{{ $val.Lat }}"));
-                // const marker = new mapgl.Marker(map, {
-                //   coordinates: [parseFloat("{{ $val.Lon }}"), parseFloat("{{ $val.Lat }}")],
-                // });
+ 
+                  new mapgl.Marker(map, {
+                    coordinates: [parseFloat("{{ $val.Lon }}"), parseFloat("{{ $val.Lat }}")],
+                  });
+             
               </script>
             {{ end }}
           </ol>
